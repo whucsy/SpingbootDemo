@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页面</title>
+    <script src="share/js/vue.min.js"></script>
+    <script src="share/js/axios.min.js"></script>
+<!--    <script src="share/js/index.js"></script>-->
+</head>
+<body>
+    <h1>这是主页面</h1>
+    <div id = "app">
+        <div v-for="book in books">
+            {{ book.bookName }}
+        </div>
+    </div>
+    <script type = "text/javascript">
+        new Vue({
+            el: '#app',
+            data () {
+                return {
+                    books: null
+                }
+            },
+            mounted () {
+                axios
+                    .get('/book/name?name=123')
+                    .then(response => (this.books = response.data))
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+            }
+        })
+    </script>
+</body>
+</html>

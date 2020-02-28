@@ -21,7 +21,7 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @RequestMapping(value = "/",method = RequestMethod.GET)
+    @GetMapping
     @ApiOperation(
             value = "获取所有书籍",
             notes = "获取所有书籍信息"
